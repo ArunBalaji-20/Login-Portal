@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SignUp PAGE</title>
+</head>
+<body>
+    
+    <div class="form-container">
+        <h1>SignUp</h1>
+        <form action="/users/signup" method="post">
+            Name: <input type="text" name="name">
+            <br>
+            <br>
+            Email id: <input type="email" name="email">
+            <br>
+            <br>
+            password: <input type="password" name="password">
+            <br>
+            <br>
+            Create account <input type="submit" value="create">
+            <br>
+            <br>
+            {% if data %}
+                <b>{{ "Account Created successfully," }}</b><a href="http://127.0.0.1:5000/">Login now</a>
+            {% endif %}
+        </form>
+    </div>
+  
+</body>
+<style>
+    .form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* vh stands for viewport height */
+}
+
+form {
+  width: 50%; /* adjust this value to control the form's width */
+  text-align: center;
+}
+</style>
+</html>
