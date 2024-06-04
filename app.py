@@ -30,7 +30,7 @@ app.config["JWT_TOKEN_LOCATION"] = ["cookies"]
 app.config['SECRET_KEY']= os.urandom(24)
 jwt= JWTManager(app)
 
-client=MongoClient('mongodb://localhost:27017/')
+client=MongoClient(host='auth_test',port=27017,username='root',password='pass')
 db=client['user_login']
 collection=db['users']
 
@@ -89,7 +89,7 @@ def APISignup():
         return jsonify({"error": "email address already in use"}), 400
 
     if collection.insert_one(result):
-       return render_template('signup.html',data={"flag":True})
+       return render_template('Signup.html',data={"flag":True})
         #return redirect(url_for('signup',data=True))
 
     return jsonify({"error":"signup failed"})
@@ -110,4 +110,4 @@ def admin():
     return jsonify(logged_in_as=current_user), 200
 
 if __name__=="__main__":
-    app.run(debug=True)
+    app.run(host='0.0.0.0',debug=True)
